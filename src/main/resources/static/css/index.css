@@ -1,0 +1,10 @@
+.containerHome {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+  }
+
+.containerHome div {
+    padding: auto;
+    margin: 0 10px;
+}

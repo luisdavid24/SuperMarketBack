@@ -1,0 +1,8 @@
+.containerStudentAndCourse{
+
+        display: flex; /* Activar flexbox en el contenedor */
+        justify-content: center; /* Centrar los elementos horizontalmente */
+        align-items: center; /* Centrar los elementos verticalmente */
+       
+    
+}

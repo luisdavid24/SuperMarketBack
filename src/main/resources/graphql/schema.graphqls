@@ -1,0 +1,57 @@
+# Query - Me sirve solo para hacer consultas
+type Query {
+    # Students
+    findProductById(ProductId: String) : Product,
+    findAllProducts : [Product]
+
+    # Courses
+    findProviderById(providerId: String) : Provider,
+    findAllProvider : [Provider]
+}
+
+type Mutation {
+    # Students
+    createProduct(inputProduct: InputProduct!) : Product,
+    deleteProductById(ProductId: String) : String
+
+    # Courses
+    createProvider(inputCourse: InputProvider!) : Provider
+    deleteProviderById(courseId: String) : String
+}
+
+type Product {
+    id: ID,
+    name: String,
+    buyingPrice: Int,
+    salePrice:Int,
+    brand:String,
+    category:String,
+    provider: Provider
+}
+
+input InputProduct {
+    name: String,
+    buyingPrice: Int,
+    salePrice:Int,
+    brand:String,
+    category:String,
+    providerId: String!
+}
+
+
+type Provider {
+    id: ID,
+    name: String,
+    category: String,
+    description: String,
+    direction: String,
+    bankAccount:String
+}
+
+input InputProvider {
+    name: String,
+    category: String,
+    description: String,
+    direction: String,
+    bankAccount:String
+}
