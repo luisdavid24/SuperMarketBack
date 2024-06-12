@@ -55,8 +55,8 @@ public class GraphQLProductController {
     }
 
     @MutationMapping(name = "deleteProductById")
-    public String deleteById(@Argument(name = "ProductId") String id){
+    public String deleteById(@Argument(name = "productId") String id){
         productService.deleteById(Long.parseLong(id));
-        return "El estudiante con id " + id + " ha sido eliminado.";
+        return "El producto con id " + id + " ha sido eliminado.";
     }
 }

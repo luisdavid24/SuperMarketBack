@@ -12,7 +12,7 @@ type Query {
 type Mutation {
     # Students
     createProduct(inputProduct: InputProduct!) : Product,
-    deleteProductById(ProductId: String) : String
+    deleteProductById(productId: String) : String
 
     # Courses
     createProvider(inputCourse: InputProvider!) : Provider

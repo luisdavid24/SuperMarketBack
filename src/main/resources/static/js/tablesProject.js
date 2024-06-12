@@ -1,5 +1,5 @@
 loadProducts();
-// loadCourse();
+loadProvider();
 
 
 async function loadProducts(){
@@ -30,7 +30,7 @@ async function loadProducts(){
             body: JSON.stringify({ query })
         })
         let dataStudent = await requestStudent.json();
-        console.log(dataStudent);
+        // console.log(dataStudent);
         let listadoHtml = '';
         for (let student of dataStudent.data.findAllProducts) {
             let studentRow='<tr><td>'+student.id+'</td><td>' + 
@@ -38,7 +38,7 @@ async function loadProducts(){
             student.salePrice + '</td><td>' +student.brand + '</td></td>'+
             '<td>' +student.category + '</td></td>'+
             '<td>' +student.provider.name + '</td></td>'+
-            '</td><td><a class="btn btn-danger btn-circle" onclick=" deleteStudentById('+ student.id +')"><i class="fas fa-trash"></i></a></td>';
+            '</td><td><a class="btn btn-danger btn-circle" onclick=" deleteProductById('+ student.id +')"><i class="fas fa-trash"></i></a></td>';
 
             listadoHtml+=studentRow;
             
@@ -53,78 +53,80 @@ async function loadProducts(){
 
 }
 
-// async function loadCourse(){
+async function loadProvider(){
 
-//     try {
-//         const query = `
-//             query {
-//                 findAllCourses {
-//                     id,
-//                     name,
-//                     category,
-//                     description,
-//                     teacher
-//                   }
-//             }
-//         `;
+    try {
+        const query = `
+            query {
+                findAllProvider {
+                    id,
+                    name,
+                    category,
+                    description,
+                    direction,
+                    bankAccount
+                  }
+            }
+        `;
         
-//         const requestCourse = await   fetch('http://localhost:8080/graphql', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Accept': 'application/json',
-//             },
-//             body: JSON.stringify({ query })
-//         })
-//         let dataCourse = await requestCourse.json();
-        
-//         let listadoHtmlCourse = '';
-//         for (let course of dataCourse.data.findAllCourses) {
-//             let courseRow='<tr><td>'+course.id+'</td><td>' + course.name + '</td><td>'+course.category + '</td><td>'+course.teacher +'</td><td>' +course.description + '</td>';
-//             listadoHtmlCourse+=courseRow;
-//         }
+        const requestCourse = await   fetch('http://localhost:8080/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({ query })
+        })
+        let dataProvider = await requestCourse.json();
+        console.log(dataProvider);
+        let listadoHtmlCourse = '';
+        for (let course of dataProvider.data.findAllProvider) {
+            let courseRow='<tr><td>'+course.id+'</td><td>' + course.name + '</td><td>'+course.category + '</td><td>'+course.description +'</td><td>' +course.direction + '</td><td>'+course.bankAccount+'</td>';
+            listadoHtmlCourse+=courseRow;
+        }
 
-//         document.querySelector('#dataTableCourse tbody').outerHTML = listadoHtmlCourse;
+        document.querySelector('#dataTableCourse tbody').outerHTML = listadoHtmlCourse;
       
        
-//     } catch (error) {
-//         console.error('Error:', error);
-//     }
+    } catch (error) {
+        console.error('Error:', error);
+    }
 
-// }
+}
 
 
 
-// async function deleteStudentById(studentId) {
-//     try {
-//         const mutation = `
-//             mutation ($studentId: String!) {
-//                 deleteStudentById(studentId: $studentId)
-//             }
-//         `;
+async function deleteProductById(productId) {
+    try {
+        const mutation = `
+            mutation ($productId: String!) {
+                deleteProductById(productId: $productId)
+            }
+        `;
 
-//         const response = await fetch('http://localhost:8080/graphql', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Accept': 'application/json',
-//             },
-//             body: JSON.stringify({ 
-//                 query: mutation,
-//                 variables: { studentId }
-//             })
-//         });
+        const response = await fetch('http://localhost:8080/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({ 
+                query: mutation,
+                variables: { productId }
+            })
+        });
 
-//         const data = await response.json();
-//         loadProducts();
-//         return data.data.deleteStudentById;
-//     } catch (error) {
-//         loadProducts();
-//         console.error('Error:', error);
-//         return null;
-//     }
+        const data = await response.json();
+        loadProducts();
+        console.log(data);
+        return data.data.deleteProductById;
+    } catch (error) {
+        loadProducts();
+        console.error('Error:', error);
+        return null;
+    }
 
-// }
+}
 
 // async function createStudent(inputStudent) {
 //     try {
@@ -280,7 +282,7 @@ async function loadProducts(){
 //         createCourse(inputCourse)
 //         .then(data => {
 //             console.log('Curso creado:', data);
-//             loadCourse();
+//             loadProvider();
 //         })
 //         .catch(error => {
 //             console.error('Error al crear curso:', error);
