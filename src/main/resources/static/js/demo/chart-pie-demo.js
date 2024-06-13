@@ -35,7 +35,7 @@ Chart.defaults.global.defaultFontColor = '#858796';
 // });
 
 
-loadDiagram();
+// loadDiagram();
 
 async function loadDiagram(){
 
