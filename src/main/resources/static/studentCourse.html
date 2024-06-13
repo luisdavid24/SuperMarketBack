@@ -86,7 +86,7 @@
             <div  class="container-fluid">
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3"  data-toggle="modal" data-target="#exampleModal" onclick="selectStudent()">
+                    <div class="card-header py-3"  data-toggle="modal" data-target="#exampleModal" >
                         <h6 class="m-0 font-weight-bold text-primary">Students Table</h6>
                         <a  class="btn btn-primary btn-icon-split btn-lg">
                             <span class="icon text-white-50">
@@ -130,7 +130,7 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">New Student</h5>
+                          <h5 class="modal-title" id="exampleModalLabel">New Product</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -140,28 +140,27 @@
                                 <form id="studentForm">
                                     <div class="form-group">
                                         <label for="name">Name:</label>
-                                        <input type="text" class="form-control" id="nameProduct" name="name" required>
+                                        <input type="text" class="form-control" id="nameProduct" name="nameProduct" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="lastName">Buying Price:</label>
                                         <input type="number" class="form-control" id="BuyingPrice" name="BuyingPrice" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="age">Sale Price:</label>
+                                        <label for="SalePrice">Sale Price:</label>
                                         <input type="number" class="form-control" id="SalePrice" name="SalePrice" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Brand:</label>
+                                        <label for="SalePrice">Brand:</label>
                                         <input type="text" class="form-control" id="Brand" name="Brand" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="course">Category:</label>
-                                        <select class="form-control" id="Category" name="Category" required>
-                                        </select>
+                                        <label for="Category">Category :</label>
+                                        <input type="text" class="form-control" id="Category" name="Category" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Provider ID:</label>
-                                        <input type="text" class="form-control" id="ProviderId" name="Brand" required>
+                                        <label for="Brand">Provider ID:</label>
+                                        <input type="text" class="form-control" id="ProviderId" name="ProviderId" required>
                                     </div>
                                     <!-- <button type="submit" class="btn btn-primary">Save</button> -->
                                 </form>

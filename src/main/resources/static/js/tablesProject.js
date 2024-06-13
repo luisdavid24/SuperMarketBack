@@ -128,7 +128,7 @@ async function deleteProductById(productId) {
 
 }
 
-async function createStudent(inputStudent) {
+async function createProduct(inputProduct) {
     try {
         const mutation = `
             mutation ($inputProduct: InputProduct!) {
@@ -136,7 +136,7 @@ async function createStudent(inputStudent) {
                     id
                     name
                     buyingPrice
-                    SalePrice
+                    salePrice
                     brand
                     category
                     provider {
@@ -159,13 +159,13 @@ async function createStudent(inputStudent) {
             },
             body: JSON.stringify({ 
                 query: mutation,
-                variables: { inputStudent }
+                variables: { inputProduct }
             })
         });
 
         const data = await response.json();
         console.log(data);
-        return data.data.createStudent;
+        return data.data.createProduct;
     } catch (error) {
         console.error('Error:', error);
         return null;
@@ -175,7 +175,7 @@ async function createStudent(inputStudent) {
 async function saveStudent(){
     try {
 
-        let inputStudent={
+        let InputProduct={
             id:undefined,
             name: undefined,
             buyingPrice:undefined,
@@ -184,77 +184,78 @@ async function saveStudent(){
             category:undefined,
             providerId : undefined, 
         };
-
+    
         
         let nameProduct = document.getElementById('nameProduct').value;
         let Brand = document.getElementById('Brand').value;
         let BuyingPrice = document.getElementById('BuyingPrice').value;
         let Category=document.getElementById('Category').value;
         let providerId=document.getElementById('ProviderId').value;
+        let SalePrice=document.getElementById('SalePrice').value;
 
         
-        inputStudent.name=nameProduct;
-        inputStudent.buyingPrice=BuyingPrice;
-        inputStudent.salePrice=age;
-        inputStudent.brand=Brand;
-        inputStudent.category=Category;
-        inputStudent.providerId=providerId;
-        console.log(inputStudent);
+        InputProduct.name=nameProduct;
+        InputProduct.buyingPrice=BuyingPrice;
+        InputProduct.salePrice=SalePrice;
+        InputProduct.brand=Brand;
+        InputProduct.category=Category;
+        InputProduct.providerId=providerId;
+        console.log(InputProduct);
         
-        // createStudent(inputStudent)
-        // .then(data => {
-        //     console.log('Provider creado:', data);
-        //     loadProducts();
-        // })
-        // .catch(error => {
-        //     console.error('Error al crear Provider:', error);
-        // });
+        createProduct(InputProduct)
+        .then(data => {
+            console.log('Product creado:', data);
+            loadProducts();
+        })
+        .catch(error => {
+            console.error('Error al crear Product:', error);
+        });
         
     } catch (error) {
         
     }
 }
 
-// async function selectStudent(){
-//     try {
-//         const query = `
-//             query {
-//                 findAllCourses {
-//                     id,
-//                     name
-//                   }
-//             }
-//         `;
+async function selectStudent(){
+    try {
+        const query = `
+            query {
+                findAllCourses {
+                    id,
+                    name
+                  }
+            }
+        `;
         
-//         const requestCourse = await   fetch('http://localhost:8080/graphql', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Accept': 'application/json',
-//             },
-//             body: JSON.stringify({ query })
-//         })
-//         let cursos = await requestCourse.json();
+        const requestCourse = await   fetch('http://localhost:8080/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({ query })
+        })
+        let cursos = await requestCourse.json();
        
-//         const selectCurso = document.getElementById('courseStudent');
-//         selectCurso.innerHTML='';
+        const selectCurso = document.getElementById('courseStudent');
+        selectCurso.innerHTML='';
         
-//         for (let course of cursos.data.findAllCourses) {
-//             const option = document.createElement('option');
-//             option.value = course.id;
-//             option.textContent = course.name;
-//             selectCurso.appendChild(option);
-//         }
+        for (let course of cursos.data.findAllCourses) {
+            const option = document.createElement('option');
+            option.value = course.id;
+            option.textContent = course.name;
+            selectCurso.appendChild(option);
+        }
 
         
         
-//     } catch (error) {
+    } catch (error) {
         
-//     }
+    }
     
     
 
-// }
+}
 
 
 // async function saveCourse(){
