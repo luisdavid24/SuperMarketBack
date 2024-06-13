@@ -77,7 +77,6 @@ The technologies used in the project were:
 
 - Spring Boot
 - Bootstrap
-- Chart.js
 - HTML
 - CSS
 - GraphQl
