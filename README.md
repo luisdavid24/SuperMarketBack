@@ -1,4 +1,4 @@
-# Spring Boot with GraphQL
+# Final examen
 By Luis David Lopez Mendoza
 
 ## Brief Project Description
@@ -21,18 +21,52 @@ This project responds to the challenge posed by the teacher.
 2. Running the database script:
 
  ```sql
-INSERT INTO courses (name, description,category, teacher) VALUES ('Mathematics Fundamentals','Explore the beauty of numbers and equations in this introductory mathematics course.','Mathematics', 'Juan Diego Ossa');
-INSERT INTO courses (name, description,category, teacher) VALUES ('Introduction to Biology','Delve into the wonders of the natural world through experiments and observations.' ,'Science', 'Leandro Jarammillo');
-INSERT INTO courses (name, description,category, teacher) VALUES ('Web Development Basics','Learn the fundamentals of coding and software development in this hands-on course.' ,'Technology', 'Neiro Figueroa');
+INSERT INTO public.provider(
+	id, bank_account, category, description, direction, name)
+	VALUES (1, 'ES7921000813610123456789', 'Alimentos', 'Proveedor de alimentos frescos', 'Calle 123, Ciudad', 'Proveedor A');
 
-INSERT INTO students (name, last_name, age, email, course_id) VALUES ('John', 'Serna', 26,'John@example.com', 1);
-INSERT INTO students (name, last_name, age, email, course_id) VALUES ('Emily', 'Johnson', 21,'Emily@example.com', 2);
-INSERT INTO students (name, last_name, age, email, course_id) VALUES ('Anyi', 'Hoyos', 22,'Anyi@example.com', 1);
-INSERT INTO students (name, last_name, age, email, course_id) VALUES ('Michael', 'Williams', 24,'Michael@example.com', 3);
-INSERT INTO students (name, last_name, age, email, course_id) VALUES ('Ethan', 'Miller', 18, 'Ethan@example.com',2);
-INSERT INTO students (name, last_name, age, email, course_id) VALUES ('Alexander', 'Williams', 20,'Alexander@example.com', 3);
-INSERT INTO students (name, last_name, age, email, course_id) VALUES ('Ava', 'Hoyos', 19, 'Ava@example.com',1);
-INSERT INTO students (name, last_name, age, email, course_id) VALUES ('Michael', 'Williams', 22,'Michael@example.com', 3);
+INSERT INTO public.provider(
+	id, bank_account, category, description, direction, name)
+	VALUES (2, 'ES6821000813610987654321', 'Bebidas', 'Proveedor de bebidas alcohólicas y no alcohólicas', 'Avenida 45, Ciudad', 'Proveedor B');
+
+INSERT INTO public.provider(
+	id, bank_account, category, description, direction, name)
+	VALUES (3, 'ES6621000813610432198765', 'Limpieza', 'Proveedor de productos de limpieza', 'Calle 67, Ciudad', 'Proveedor C');
+INSERT INTO public.provider(
+	id, bank_account, category, description, direction, name)
+	VALUES (4, 'ES6521000813610654321987', 'Electrónica', 'Proveedor de dispositivos electrónicos', 'Boulevard 89, Ciudad', 'Proveedor D');
+INSERT INTO public.product(
+	id, name, buying_price, sale_price, brand, category, provider_id)
+	VALUES (1, 'Manzanas Fuji', 1, 2, 'FruitCo', 'Alimentos', 1);
+
+INSERT INTO public.product(
+	id, name, buying_price, sale_price, brand, category, provider_id)
+	VALUES (2, 'Jugo de Naranja', 3, 4, 'DrinkCo', 'Bebidas', 2);
+
+INSERT INTO public.product(
+	id, name, buying_price, sale_price, brand, category, provider_id)
+	VALUES (3, 'Detergente XYZ', 5, 7, 'CleanCo', 'Limpieza', 3);
+
+INSERT INTO public.product(
+	id, name, buying_price, sale_price, brand, category, provider_id)
+	VALUES (4, 'Televisor 50"', 200, 250, 'ElectroBrand', 'Electrónica', 4);
+
+INSERT INTO public.product(
+	id, name, buying_price, sale_price, brand, category, provider_id)
+	VALUES (5, 'Peras Williams', 2, 3, 'FruitCo', 'Alimentos', 1);
+
+INSERT INTO public.product(
+	id, name, buying_price, sale_price, brand, category, provider_id)
+	VALUES (6, 'Cerveza Lager', 2, 3, 'DrinkCo', 'Bebidas', 2);
+
+INSERT INTO public.product(
+	id, name, buying_price, sale_price, brand, category, provider_id)
+	VALUES (7, 'Limpiador Multiusos', 4, 6, 'CleanCo', 'Limpieza', 3);
+
+INSERT INTO public.product(
+	id, name, buying_price, sale_price, brand, category, provider_id)
+	VALUES (8, 'Laptop 15"', 500, 650, 'ElectroBrand', 'Electrónica', 4);
+
 
 ```
 ## Usage:
