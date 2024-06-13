@@ -128,88 +128,92 @@ async function deleteProductById(productId) {
 
 }
 
-// async function createStudent(inputStudent) {
-//     try {
-//         const mutation = `
-//             mutation ($inputStudent: InputStudent!) {
-//                 createStudent(inputStudent: $inputStudent) {
-//                     id
-//                     name
-//                     lastName
-//                     age
-//                     email
-//                     course {
-//                         id
-//                         name
-//                         category
-//                         teacher
-//                         description
-//                     }
-//                 }
-//             }
-//         `;
+async function createStudent(inputStudent) {
+    try {
+        const mutation = `
+            mutation ($inputProduct: InputProduct!) {
+                createProduct(inputProduct: $inputProduct) {
+                    id
+                    name
+                    buyingPrice
+                    SalePrice
+                    brand
+                    category
+                    provider {
+                        id
+                        name
+                        category
+                        description
+                        direction
+                        bankAccount
+                    }
+                }
+            }
+        `;
 
-//         const response = await fetch('http://localhost:8080/graphql', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Accept': 'application/json',
-//             },
-//             body: JSON.stringify({ 
-//                 query: mutation,
-//                 variables: { inputStudent }
-//             })
-//         });
+        const response = await fetch('http://localhost:8080/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({ 
+                query: mutation,
+                variables: { inputStudent }
+            })
+        });
 
-//         const data = await response.json();
-//         console.log(data);
-//         return data.data.createStudent;
-//     } catch (error) {
-//         console.error('Error:', error);
-//         return null;
-//     }
-// }
+        const data = await response.json();
+        console.log(data);
+        return data.data.createStudent;
+    } catch (error) {
+        console.error('Error:', error);
+        return null;
+    }
+}
 
-// async function saveStudent(){
-//     try {
+async function saveStudent(){
+    try {
 
-//         let inputStudent={
-//             id:undefined,
-//             name: undefined,
-//             lastName:undefined,
-//             age:undefined,
-//             email:undefined,
-//             courseId : undefined, 
-//         };
-
-        
-//         let nameStudent = document.getElementById('nameStudent').value;
-//         let lastNameStudent = document.getElementById('lastNameStudent').value;
-//         let age = document.getElementById('age').value;
-//         let email=document.getElementById('email').value;
-//         let courseId=document.getElementById('courseStudent').value;
+        let inputStudent={
+            id:undefined,
+            name: undefined,
+            buyingPrice:undefined,
+            salePrice:undefined,
+            brand:undefined,
+            category:undefined,
+            providerId : undefined, 
+        };
 
         
-//         inputStudent.name=nameStudent;
-//         inputStudent.lastName=lastNameStudent;
-//         inputStudent.age=age;
-//         inputStudent.email=email;
-//         inputStudent.courseId=courseId;
-//         console.log(inputStudent);
+        let nameProduct = document.getElementById('nameProduct').value;
+        let Brand = document.getElementById('Brand').value;
+        let BuyingPrice = document.getElementById('BuyingPrice').value;
+        let Category=document.getElementById('Category').value;
+        let providerId=document.getElementById('ProviderId').value;
+
         
-//         createStudent(inputStudent)
-//         .then(data => {
-//             console.log('Estudiante creado:', data);
-//             loadProducts();
-//         })
-//         .catch(error => {
-//             console.error('Error al crear estudiante:', error);
-//         });
+        inputStudent.name=nameProduct;
+        inputStudent.buyingPrice=BuyingPrice;
+        inputStudent.salePrice=age;
+        inputStudent.brand=Brand;
+        inputStudent.category=Category;
+        inputStudent.providerId=providerId;
+        console.log(inputStudent);
         
-//     } catch (error) {
+        // createStudent(inputStudent)
+        // .then(data => {
+        //     console.log('Provider creado:', data);
+        //     loadProducts();
+        // })
+        // .catch(error => {
+        //     console.error('Error al crear Provider:', error);
+        // });
         
-//     }
-// }
+    } catch (error) {
+        
+    }
+}
 
 // async function selectStudent(){
 //     try {
